@@ -1,0 +1,772 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bader Pflasterbau – Qualität die bleibt.</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --brown: #8B6914;
+  --brown-light: #C49A2A;
+  --brown-dim: rgba(139,105,20,0.1);
+  --gray-dark: #3A3530;
+  --gray-mid: #6B6560;
+  --gray-light: #9A9590;
+  --bg: #F8F5F0;
+  --bg2: #F0EBE2;
+  --bg3: #E8E1D6;
+  --white: #FFFFFF;
+  --border: rgba(139,105,20,0.15);
+  --text: #2A2520;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+  background:var(--bg);
+  color:var(--text);
+  font-family:'DM Sans',sans-serif;
+  font-weight:300;
+  overflow-x:hidden;
+}
+
+/* NAV */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:200;
+  display:flex;justify-content:space-between;align-items:center;
+  padding:18px 56px;
+  background:rgba(248,245,240,0.96);
+  backdrop-filter:blur(16px);
+  border-bottom:1px solid var(--border);
+}
+.nav-logo{text-decoration:none;display:flex;flex-direction:column;gap:1px;}
+.nav-logo-top{
+  font-family:'Playfair Display',serif;
+  font-size:20px;font-weight:900;
+  color:var(--gray-dark);letter-spacing:0.5px;
+}
+.nav-logo-sub{font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--brown);}
+.nav-links{display:flex;gap:8px;list-style:none;}
+.nav-links a{
+  font-size:11px;letter-spacing:1.5px;color:var(--gray-dark);
+  text-decoration:none;text-transform:uppercase;
+  transition:all .2s;
+  padding:8px 16px;
+  border:1px solid var(--border);
+  background:var(--brown-dim);
+  font-weight:500;
+}
+.nav-links a:hover{
+  background:var(--brown);
+  color:var(--white);
+  border-color:var(--brown);
+}
+.nav-cta{
+  background:var(--brown);color:var(--white);
+  padding:11px 28px;font-size:11px;font-weight:600;
+  letter-spacing:2px;text-transform:uppercase;
+  text-decoration:none;transition:background .2s;
+}
+.nav-cta:hover{background:var(--brown-light);}
+
+/* HERO */
+.hero{
+  min-height:100vh;
+  display:grid;grid-template-columns:1.1fr 0.9fr;
+  padding-top:64px;
+  position:relative;overflow:hidden;
+}
+.hero-left{
+  display:flex;flex-direction:column;justify-content:center;
+  padding:80px 56px 80px;
+  background:var(--white);
+  position:relative;z-index:2;
+}
+.hero-right{
+  background:var(--bg2);
+  position:relative;overflow:hidden;
+  display:flex;align-items:center;justify-content:center;
+}
+.hero-pattern{
+  position:absolute;inset:0;
+  background-image:
+    repeating-linear-gradient(0deg, rgba(139,105,20,0.06) 0px, rgba(139,105,20,0.06) 1px, transparent 1px, transparent 40px),
+    repeating-linear-gradient(90deg, rgba(139,105,20,0.06) 0px, rgba(139,105,20,0.06) 1px, transparent 1px, transparent 40px);
+}
+.hero-badge{
+  position:absolute;top:50%;left:50%;
+  transform:translate(-50%,-50%);
+  width:280px;height:280px;
+  border-radius:50%;
+  border:1px solid rgba(139,105,20,0.2);
+  display:flex;align-items:center;justify-content:center;
+  flex-direction:column;gap:8px;
+}
+.hero-badge::before{
+  content:'';position:absolute;inset:20px;
+  border-radius:50%;border:1px solid rgba(139,105,20,0.12);
+}
+.hero-badge-icon{
+  position:relative;z-index:1;
+  opacity:0.9;
+}
+.hero-badge-text{
+  font-family:'Playfair Display',serif;
+  font-size:13px;font-style:italic;
+  color:var(--brown);opacity:0.6;
+  position:relative;z-index:1;
+  text-align:center;
+}
+
+.hero-tag{
+  font-size:10px;letter-spacing:4px;text-transform:uppercase;
+  color:var(--brown);margin-bottom:24px;
+  display:flex;align-items:center;gap:14px;
+}
+.hero-tag::before{content:'';width:32px;height:1px;background:var(--brown);}
+.hero h1{
+  font-family:'Playfair Display',serif;
+  font-size:clamp(44px,5.5vw,72px);
+  font-weight:900;line-height:1.05;
+  letter-spacing:-0.5px;margin-bottom:8px;
+  color:var(--gray-dark);
+}
+.hero h1 em{font-style:italic;color:var(--brown);font-weight:400;}
+.hero-sub{
+  font-family:'Playfair Display',serif;
+  font-size:clamp(18px,2vw,26px);
+  font-weight:400;font-style:italic;
+  color:var(--gray-light);margin-bottom:28px;
+}
+.hero-desc{
+  font-size:15px;line-height:1.9;
+  color:var(--gray-mid);max-width:440px;margin-bottom:44px;
+}
+.hero-actions{display:flex;gap:14px;align-items:center;flex-wrap:wrap;}
+.btn-primary{
+  background:var(--brown);color:var(--white);
+  padding:15px 32px;font-size:12px;font-weight:600;
+  letter-spacing:2px;text-transform:uppercase;
+  text-decoration:none;display:inline-flex;align-items:center;gap:8px;
+  transition:background .2s;
+}
+.btn-primary:hover{background:var(--brown-light);}
+.btn-outline{
+  border:1px solid var(--border);color:var(--gray-mid);
+  padding:15px 28px;font-size:12px;letter-spacing:2px;
+  text-transform:uppercase;text-decoration:none;transition:all .2s;
+}
+.btn-outline:hover{border-color:var(--brown);color:var(--brown);}
+
+/* TICKER */
+.ticker-wrap{
+  background:var(--gray-dark);overflow:hidden;
+  padding:13px 0;white-space:nowrap;
+}
+.ticker-track{
+  display:inline-flex;
+  animation:ticker 28s linear infinite;
+}
+.ticker-track span{
+  font-size:11px;font-weight:500;letter-spacing:3px;
+  text-transform:uppercase;color:rgba(255,255,255,0.7);padding:0 48px;
+}
+.ticker-track span.sep{color:var(--brown-light);}
+@keyframes ticker{from{transform:translateX(0);}to{transform:translateX(-50%);}}
+
+/* STATS */
+.stats{
+  display:grid;grid-template-columns:repeat(4,1fr);
+  background:var(--white);
+  border-bottom:2px solid var(--bg2);
+}
+.stat{
+  padding:44px 36px;
+  border-right:1px solid var(--border);
+  position:relative;text-align:center;
+}
+.stat:last-child{border-right:none;}
+.stat-num{
+  font-family:'Playfair Display',serif;
+  font-size:48px;font-weight:900;
+  color:var(--brown);line-height:1;margin-bottom:8px;
+}
+.stat-label{font-size:11px;color:var(--gray-light);letter-spacing:2px;text-transform:uppercase;}
+
+/* SECTIONS */
+section{position:relative;}
+.sec-inner{padding:100px 56px;}
+.sec-tag{
+  font-size:10px;letter-spacing:4px;color:var(--brown);
+  text-transform:uppercase;margin-bottom:16px;
+  display:flex;align-items:center;gap:12px;
+}
+.sec-tag::before{content:'';width:24px;height:1px;background:var(--brown);}
+.sec-title{
+  font-family:'Playfair Display',serif;
+  font-size:clamp(30px,4vw,52px);
+  font-weight:900;line-height:1.05;
+  letter-spacing:-0.5px;margin-bottom:56px;
+  color:var(--gray-dark);
+}
+.sec-title em{font-style:italic;color:var(--brown);font-weight:400;}
+
+/* LEISTUNGEN – CLEAN GRID */
+.leistungen-bg{background:var(--white);}
+.leistungen-grid{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:16px;
+}
+.svc{
+  background:var(--bg);
+  border:1px solid var(--border);
+  border-left:3px solid var(--brown);
+  padding:32px 28px;
+  display:flex;gap:20px;align-items:flex-start;
+  transition:all .25s;
+}
+.svc:hover{
+  background:var(--white);
+  border-left-color:var(--brown-light);
+  transform:translateX(4px);
+  box-shadow:0 4px 24px rgba(139,105,20,0.08);
+}
+.svc-icon{
+  font-size:28px;flex-shrink:0;
+  width:52px;height:52px;
+  background:var(--brown-dim);
+  display:flex;align-items:center;justify-content:center;
+  border-radius:4px;
+}
+.svc-body{}
+.svc-title{
+  font-family:'Playfair Display',serif;
+  font-size:17px;font-weight:700;
+  margin-bottom:6px;color:var(--gray-dark);
+}
+.svc-desc{font-size:13px;line-height:1.7;color:var(--gray-mid);}
+.svc-price{
+  margin-top:10px;font-size:11px;
+  color:var(--brown);letter-spacing:1px;
+  font-weight:600;text-transform:uppercase;
+}
+
+/* ÜBER UNS */
+.about-bg{background:var(--bg2);}
+.about-grid{
+  display:grid;grid-template-columns:1fr 1fr;
+  gap:80px;align-items:start;
+}
+.about-lead{
+  font-family:'Playfair Display',serif;
+  font-size:clamp(18px,2.5vw,26px);
+  font-style:italic;font-weight:400;
+  color:var(--brown);line-height:1.5;
+  margin-bottom:28px;
+}
+.about-text p{
+  font-size:14px;line-height:1.9;
+  color:var(--gray-mid);margin-bottom:16px;
+}
+.about-values{
+  margin-top:36px;
+  display:grid;grid-template-columns:1fr 1fr;gap:12px;
+}
+.value-box{
+  background:var(--white);
+  border:1px solid var(--border);
+  padding:20px;
+}
+.value-icon{font-size:22px;margin-bottom:8px;}
+.value-title{
+  font-family:'Playfair Display',serif;
+  font-size:14px;font-weight:700;
+  color:var(--gray-dark);margin-bottom:4px;
+}
+.value-desc{font-size:12px;color:var(--gray-light);line-height:1.6;}
+
+.about-right{}
+.team-card{
+  background:var(--white);
+  border:1px solid var(--border);
+  padding:40px;margin-bottom:20px;
+}
+.team-initial{
+  width:72px;height:72px;
+  background:var(--brown);
+  display:flex;align-items:center;justify-content:center;
+  font-family:'Playfair Display',serif;
+  font-size:28px;font-weight:900;color:var(--white);
+  margin-bottom:20px;
+}
+.team-name{
+  font-family:'Playfair Display',serif;
+  font-size:22px;font-weight:700;
+  color:var(--gray-dark);margin-bottom:4px;
+}
+.team-role{font-size:11px;letter-spacing:2px;color:var(--brown);text-transform:uppercase;margin-bottom:16px;}
+.team-desc{font-size:13px;line-height:1.8;color:var(--gray-mid);}
+
+.facts-grid{
+  display:grid;grid-template-columns:1fr 1fr;gap:1px;
+  background:var(--border);
+  border:1px solid var(--border);
+}
+.fact{
+  background:var(--white);padding:24px 20px;text-align:center;
+}
+.fact-num{
+  font-family:'Playfair Display',serif;
+  font-size:36px;font-weight:900;
+  color:var(--brown);line-height:1;margin-bottom:4px;
+}
+.fact-label{font-size:10px;color:var(--gray-light);letter-spacing:2px;text-transform:uppercase;}
+
+/* KONTAKT */
+.contact-bg{background:var(--white);}
+.contact-grid{
+  display:grid;grid-template-columns:1fr 1.2fr;
+  gap:64px;align-items:start;
+}
+.contact-details{display:flex;flex-direction:column;gap:12px;margin-bottom:32px;}
+.contact-item{
+  display:flex;align-items:center;gap:14px;
+  font-size:14px;color:var(--gray-mid);
+  padding:14px 16px;background:var(--bg);
+  border-left:2px solid var(--brown);
+}
+.c-icon{font-size:18px;flex-shrink:0;color:var(--brown);}
+.hours-box{
+  background:var(--bg2);padding:24px;
+  border:1px solid var(--border);margin-top:8px;
+}
+.hours-title{
+  font-size:10px;letter-spacing:2px;text-transform:uppercase;
+  color:var(--brown);margin-bottom:12px;font-weight:600;
+}
+.hour-row{
+  display:flex;justify-content:space-between;
+  font-size:13px;color:var(--gray-mid);
+  padding:6px 0;border-bottom:1px solid var(--border);
+}
+.hour-row:last-child{border-bottom:none;}
+
+/* FORMULAR */
+.form-box{
+  background:var(--bg);
+  border:1px solid var(--border);
+  padding:44px;
+}
+.form-box h3{
+  font-family:'Playfair Display',serif;
+  font-size:24px;font-weight:700;
+  color:var(--gray-dark);margin-bottom:8px;
+}
+.form-box p{font-size:13px;color:var(--gray-light);margin-bottom:28px;}
+.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+.fg{display:flex;flex-direction:column;gap:6px;}
+.fg.full{grid-column:1/-1;}
+.fg label{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--brown);font-weight:600;}
+.fg input,.fg textarea,.fg select{
+  background:var(--white);
+  border:1px solid var(--border);
+  color:var(--text);padding:12px 16px;
+  font-family:'DM Sans',sans-serif;font-size:13px;font-weight:300;
+  outline:none;transition:border-color .3s;resize:none;
+}
+.fg input:focus,.fg textarea:focus,.fg select:focus{border-color:var(--brown);}
+.fg textarea{height:100px;}
+.form-submit{
+  margin-top:16px;
+  background:var(--brown);color:var(--white);
+  border:none;cursor:pointer;
+  padding:15px 32px;font-size:12px;font-weight:600;
+  letter-spacing:2px;text-transform:uppercase;
+  font-family:'DM Sans',sans-serif;width:100%;
+  transition:background .2s;
+}
+.form-submit:hover{background:var(--brown-light);}
+
+/* POPUP */
+.popup-overlay{
+  display:none;position:fixed;inset:0;
+  background:rgba(0,0,0,0.7);z-index:9999;
+  overflow-y:auto;padding:40px 24px;
+}
+.popup-box{
+  max-width:720px;margin:0 auto;
+  background:var(--white);padding:56px;
+  border:1px solid var(--border);position:relative;
+}
+.popup-close{
+  position:absolute;top:20px;right:20px;
+  background:none;border:none;color:var(--brown);
+  font-size:24px;cursor:pointer;
+}
+.popup-box h1{
+  font-family:'Playfair Display',serif;font-size:32px;
+  font-weight:900;margin-bottom:28px;color:var(--gray-dark);
+}
+.popup-box h2{
+  font-family:'Playfair Display',serif;font-size:18px;
+  font-weight:700;margin:24px 0 10px;color:var(--brown);
+}
+.popup-box p{font-size:14px;color:var(--gray-mid);line-height:1.8;margin-bottom:8px;}
+
+/* FOOTER */
+footer{
+  background:var(--gray-dark);
+  padding:32px 56px;
+  display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px;
+}
+footer p{font-size:11px;color:rgba(255,255,255,0.4);letter-spacing:1px;}
+footer p strong{color:rgba(255,255,255,0.7);}
+.footer-links{display:flex;gap:24px;}
+.footer-links a{
+  font-size:11px;color:var(--brown-light);
+  text-decoration:none;letter-spacing:1px;transition:color .2s;
+}
+.footer-links a:hover{color:var(--white);}
+
+/* ANIMATIONS */
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .7s ease,transform .7s ease;}
+.reveal.visible{opacity:1;transform:translateY(0);}
+
+@media(max-width:768px){
+  nav{padding:14px 20px;}
+  .nav-links{display:none;}
+  .hero{grid-template-columns:1fr;}
+  .hero-right{display:none;}
+  .hero-left{padding:80px 20px 60px;}
+  .stats{grid-template-columns:1fr 1fr;}
+  .sec-inner{padding:64px 20px;}
+  .leistungen-grid{grid-template-columns:1fr;}
+  .about-grid{grid-template-columns:1fr;}
+  .about-values{grid-template-columns:1fr;}
+  .contact-grid{grid-template-columns:1fr;}
+  .form-grid{grid-template-columns:1fr;}
+  footer{padding:24px 20px;flex-direction:column;text-align:center;}
+}
+</style>
+</head>
+<body>
+
+<!-- IMPRESSUM POPUP -->
+<div class="popup-overlay" id="impressum-popup">
+  <div class="popup-box">
+    <button class="popup-close" onclick="document.getElementById('impressum-popup').style.display='none'">✕</button>
+    <h1>Impressum</h1>
+    <p><strong>Bader Pflasterbau</strong><br>Forstweg 20<br>91154 Roth-Eckersmühlen</p>
+    <h2>Kontakt</h2>
+    <p>Telefon: 09171 70339<br>E-Mail: info@bader-pflasterbau.de</p>
+    <h2>Berufsbezeichnung</h2>
+    <p>Straßenbau- und Pflasterbauunternehmen<br>Verliehen in: Deutschland</p>
+    <h2>Verbraucherstreitbeilegung</h2>
+    <p>Wir sind nicht bereit oder verpflichtet, an Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle teilzunehmen.</p>
+  </div>
+</div>
+
+<!-- DATENSCHUTZ POPUP -->
+<div class="popup-overlay" id="datenschutz-popup">
+  <div class="popup-box">
+    <button class="popup-close" onclick="document.getElementById('datenschutz-popup').style.display='none'">✕</button>
+    <h1>Datenschutzerklärung</h1>
+    <h2>1. Verantwortliche Stelle</h2>
+    <p>Bader Pflasterbau · Forstweg 20 · 91154 Roth-Eckersmühlen<br>Telefon: 09171 70339 · E-Mail: info@bader-pflasterbau.de</p>
+    <h2>2. Datenerfassung</h2>
+    <p>Beim Besuch dieser Website werden technische Daten (z.B. IP-Adresse, Browser, Uhrzeit) automatisch erfasst. Diese Daten dienen ausschließlich der Bereitstellung der Website.</p>
+    <h2>3. Hosting</h2>
+    <p>Diese Website wird extern gehostet. Personenbezogene Daten werden auf den Servern des Hosters gespeichert und ausschließlich zur Bereitstellung des Online-Angebots genutzt.</p>
+    <h2>4. Ihre Rechte</h2>
+    <p>Sie haben jederzeit das Recht auf Auskunft, Berichtigung und Löschung Ihrer personenbezogenen Daten. Beschwerden können bei der zuständigen Aufsichtsbehörde eingereicht werden.</p>
+    <p style="margin-top:20px;font-size:12px;color:#aaa;">Quelle: eRecht24</p>
+  </div>
+</div>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">
+    <div class="nav-logo-top">Bader Pflasterbau</div>
+    <div class="nav-logo-sub">Roth · Seit über 30 Jahren</div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#leistungen">Leistungen</a></li>
+    <li><a href="#ueber-uns">Über uns</a></li>
+    <li><a href="#kontakt">Kontakt</a></li>
+  </ul>
+  <a href="#kontakt" class="nav-cta">Angebot anfragen</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero" style="border-bottom:2px solid var(--bg2);">
+  <div class="hero-left">
+    <div class="hero-tag">Pflasterbau · Außenanlagen · Roth & Umgebung</div>
+    <h1>Qualität,<br>die <em>bleibt.</em></h1>
+    <div class="hero-sub">Stein für Stein. Jahr für Jahr.</div>
+    <p class="hero-desc">Bader Pflasterbau steht seit über 30 Jahren für handwerkliche Präzision in Roth und Umgebung. Von der Einfahrt bis zur kompletten Außenanlage — wir schaffen Flächen, die halten.</p>
+    <div class="hero-actions">
+      <a href="#kontakt" class="btn-primary">Kostenloses Angebot →</a>
+      <a href="#leistungen" class="btn-outline">Leistungen ansehen</a>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="hero-pattern"></div>
+    <div class="hero-badge">
+      <div class="hero-badge-icon">
+    <svg width="160" height="120" viewBox="0 0 160 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <!-- Orange box -->
+      <rect x="10" y="20" width="140" height="90" rx="3" fill="#D4621A"/>
+      <rect x="10" y="20" width="140" height="90" rx="3" stroke="#8B3A0A" stroke-width="2"/>
+      <!-- Pflastersteine 3D Effekt -->
+      <!-- Stein 1 hinten -->
+      <polygon points="40,35 110,35 120,50 50,50" fill="#F0F0F0" stroke="#999" stroke-width="1"/>
+      <polygon points="110,35 120,50 120,60 110,45" fill="#D0D0D0" stroke="#999" stroke-width="1"/>
+      <!-- Stein 2 mitte -->
+      <polygon points="30,52 100,52 110,67 40,67" fill="#F5F5F5" stroke="#999" stroke-width="1"/>
+      <polygon points="100,52 110,67 110,77 100,62" fill="#CACACA" stroke="#999" stroke-width="1"/>
+      <!-- Stein 3 vorne -->
+      <polygon points="20,69 90,69 100,84 30,84" fill="#FFFFFF" stroke="#999" stroke-width="1"/>
+      <polygon points="90,69 100,84 100,94 90,79" fill="#DEDEDE" stroke="#999" stroke-width="1"/>
+      <!-- Bader Text -->
+      <text x="80" y="108" font-family="Arial Black, sans-serif" font-size="18" font-weight="900" fill="white" text-anchor="middle" letter-spacing="2">BADER</text>
+    </svg>
+  </div>
+      <div class="hero-badge-text">Handwerk<br>mit Tradition</div>
+    </div>
+  </div>
+</section>
+
+<!-- TICKER -->
+<div class="ticker-wrap">
+  <div class="ticker-track">
+    <span>Pflasterarbeiten</span><span class="sep"> ◆ </span>
+    <span>Natursteinarbeiten</span><span class="sep"> ◆ </span>
+    <span>Terrassengestaltung</span><span class="sep"> ◆ </span>
+    <span>Hofgestaltung</span><span class="sep"> ◆ </span>
+    <span>Gartenmauern</span><span class="sep"> ◆ </span>
+    <span>Wegebau</span><span class="sep"> ◆ </span>
+    <span>Außenanlagen</span><span class="sep"> ◆ </span>
+    <span>Straßenbau</span><span class="sep"> ◆ </span>
+    <span>Pflasterarbeiten</span><span class="sep"> ◆ </span>
+    <span>Natursteinarbeiten</span><span class="sep"> ◆ </span>
+    <span>Terrassengestaltung</span><span class="sep"> ◆ </span>
+    <span>Hofgestaltung</span><span class="sep"> ◆ </span>
+    <span>Gartenmauern</span><span class="sep"> ◆ </span>
+    <span>Wegebau</span><span class="sep"> ◆ </span>
+    <span>Außenanlagen</span><span class="sep"> ◆ </span>
+    <span>Straßenbau</span><span class="sep"> ◆ </span>
+  </div>
+</div>
+
+<!-- STATS -->
+<div class="stats">
+  <div class="stat reveal">
+    <div class="stat-num">30+</div>
+    <div class="stat-label">Jahre Erfahrung</div>
+  </div>
+  <div class="stat reveal">
+    <div class="stat-num">10+</div>
+    <div class="stat-label">Leistungsbereiche</div>
+  </div>
+  <div class="stat reveal">
+    <div class="stat-num">100%</div>
+    <div class="stat-label">Regionale Qualität</div>
+  </div>
+  <div class="stat reveal">
+    <div class="stat-num">0€</div>
+    <div class="stat-label">Kostenlose Beratung</div>
+  </div>
+</div>
+
+<!-- LEISTUNGEN -->
+<section id="leistungen" class="leistungen-bg">
+  <div class="sec-inner">
+    <div class="sec-tag reveal">Was wir anbieten</div>
+    <h2 class="sec-title reveal">Unsere <em>Leistungen.</em></h2>
+    <div class="leistungen-grid">
+      <div class="svc reveal">
+        <div class="svc-icon">🪵</div>
+        <div class="svc-body">
+          <div class="svc-title">Pflasterarbeiten</div>
+          <div class="svc-desc">Verlegen von Beton- und Natursteinpflaster für Einfahrten, Wege und Plätze — präzise und langlebig.</div>
+          <div class="svc-price">Preis auf Anfrage · Verhandelbar</div>
+        </div>
+      </div>
+      <div class="svc reveal">
+        <div class="svc-icon">🏡</div>
+        <div class="svc-body">
+          <div class="svc-title">Außenanlagen & Hofgestaltung</div>
+          <div class="svc-desc">Komplette Gestaltung Ihrer Außenbereiche — von der Planung bis zur fertigen Fläche.</div>
+          <div class="svc-price">Preis auf Anfrage · Verhandelbar</div>
+        </div>
+      </div>
+      <div class="svc reveal">
+        <div class="svc-icon">🌿</div>
+        <div class="svc-body">
+          <div class="svc-title">Naturstein & Gartenmauern</div>
+          <div class="svc-desc">Hochwertige Natursteine und stabile Gartenmauern — als Sichtschutz, Stütze oder edles Gestaltungselement.</div>
+          <div class="svc-price">Preis auf Anfrage · Verhandelbar</div>
+        </div>
+      </div>
+      <div class="svc reveal">
+        <div class="svc-icon">🚗</div>
+        <div class="svc-body">
+          <div class="svc-title">Garageneinfahrten & Terrassen</div>
+          <div class="svc-desc">Langlebige Einfahrten und einladende Terrassen aus Betonsteinpflaster oder Naturstein.</div>
+          <div class="svc-price">Preis auf Anfrage · Verhandelbar</div>
+        </div>
+      </div>
+      <div class="svc reveal">
+        <div class="svc-icon">🛤️</div>
+        <div class="svc-body">
+          <div class="svc-title">Wegebau & Straßenbau</div>
+          <div class="svc-desc">Professioneller Weg- und Straßenbau für private und gewerbliche Kunden in Roth und Umgebung.</div>
+          <div class="svc-price">Preis auf Anfrage · Verhandelbar</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ÜBER UNS -->
+<section id="ueber-uns" class="about-bg">
+  <div class="sec-inner">
+    <div class="about-grid">
+      <div class="about-text reveal">
+        <div class="sec-tag">Wer wir sind</div>
+        <h2 class="sec-title" style="margin-bottom:20px;">Ein Betrieb,<br>dem man <em>vertraut.</em></h2>
+        <p class="about-lead">„Wir bauen nicht einfach Pflaster — wir gestalten Außenbereiche, die Generationen überdauern."</p>
+        <p>Bader Pflasterbau ist ein traditionsreiches Unternehmen aus Roth-Eckersmühlen. Seit über 30 Jahren sind wir in der Region aktiv und haben uns einen Namen für verlässliche, saubere und langlebige Arbeit gemacht.</p>
+        <p>Ob kleine Garageneinfahrt oder große Außenanlage — jedes Projekt bekommt bei uns die gleiche Sorgfalt und Aufmerksamkeit. Wir arbeiten persönlich, direkt und ohne unnötige Umwege.</p>
+        <p>Unsere Kunden kommen immer wieder — weil Qualität überzeugt und Vertrauen verdient werden muss.</p>
+        <div class="about-values">
+          <div class="value-box">
+            <div class="value-icon">🤝</div>
+            <div class="value-title">Persönlich</div>
+            <div class="value-desc">Direkter Kontakt, keine Zwischenhändler</div>
+          </div>
+          <div class="value-box">
+            <div class="value-icon">⭐</div>
+            <div class="value-title">Qualität</div>
+            <div class="value-desc">Handwerk das sichtbar und haltbar ist</div>
+          </div>
+          <div class="value-box">
+            <div class="value-icon">📍</div>
+            <div class="value-title">Regional</div>
+            <div class="value-desc">Aus Roth — für Roth und Umgebung</div>
+          </div>
+          <div class="value-box">
+            <div class="value-icon">💬</div>
+            <div class="value-title">Ehrlich</div>
+            <div class="value-desc">Faire Preise, transparente Angebote</div>
+          </div>
+        </div>
+      </div>
+      <div class="about-right reveal">
+        <div class="team-card">
+          <div class="team-initial">B</div>
+          <div class="team-name">Familie Bader</div>
+          <div class="team-role">Inhaber · Bader Pflasterbau</div>
+          <div class="team-desc">Als inhabergeführter Betrieb steht bei uns die Familie hinter jedem Auftrag. Wir kennen unsere Kunden persönlich und das spürt man — in der Beratung, in der Ausführung und im Ergebnis.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- KONTAKT -->
+<section id="kontakt" class="contact-bg">
+  <div class="sec-inner">
+    <div class="contact-grid">
+      <div>
+        <div class="sec-tag reveal">Sprechen Sie uns an</div>
+        <h2 class="sec-title reveal" style="margin-bottom:24px;">Jetzt <em>anfragen.</em></h2>
+        <p class="reveal" style="font-size:14px;line-height:1.9;color:var(--gray-mid);margin-bottom:28px;">Wir erstellen Ihnen kostenlos und unverbindlich ein Angebot. Rufen Sie uns einfach an oder schreiben Sie uns.</p>
+        <div class="contact-details">
+          <div class="contact-item reveal">
+            <div class="c-icon">📍</div>
+            <div>Forstweg 20 · 91154 Roth-Eckersmühlen</div>
+          </div>
+          <div class="contact-item reveal">
+            <div class="c-icon">📞</div>
+            <a href="tel:0917170339" style="color:var(--gray-mid);text-decoration:none;">09171 70339</a>
+          </div>
+          <div class="contact-item reveal">
+            <div class="c-icon">✉</div>
+            <a href="mailto:info@bader-pflasterbau.de" style="color:var(--gray-mid);text-decoration:none;">info@bader-pflasterbau.de</a>
+          </div>
+        </div>
+        <div class="hours-box reveal">
+          <div class="hours-title">Öffnungszeiten</div>
+          <div class="hour-row"><span>Montag – Donnerstag</span><span>08:00 – 17:00 Uhr</span></div>
+          <div class="hour-row"><span>Freitag</span><span>08:00 – 12:00 Uhr</span></div>
+          <div class="hour-row"><span>Samstag & Sonntag</span><span>Geschlossen</span></div>
+        </div>
+      </div>
+
+      <div class="form-box reveal">
+        <h3>Kostenloses Angebot anfragen</h3>
+        <p>Beschreiben Sie Ihr Projekt — wir melden uns innerhalb von 1–2 Werktagen.</p>
+        <form action="mailto:info@bader-pflasterbau.de" method="POST" enctype="text/plain">
+          <div class="form-grid">
+            <div class="fg">
+              <label>Ihr Name</label>
+              <input type="text" name="name" placeholder="Max Mustermann" required>
+            </div>
+            <div class="fg">
+              <label>Telefon</label>
+              <input type="tel" name="telefon" placeholder="0911 ...">
+            </div>
+            <div class="fg full">
+              <label>E-Mail</label>
+              <input type="email" name="email" placeholder="max@beispiel.de" required>
+            </div>
+            <div class="fg full">
+              <label>Leistung</label>
+              <select name="leistung">
+                <option value="">Bitte wählen...</option>
+                <option>Pflasterarbeiten</option>
+                <option>Außenanlagen & Hofgestaltung</option>
+                <option>Natursteinarbeiten</option>
+                <option>Gartenmauern</option>
+                <option>Garageneinfahrt</option>
+                <option>Terrassengestaltung</option>
+                <option>Wegebau & Straßenbau</option>
+                <option>Zäune & Abgrenzungen</option>
+                <option>Sonstiges</option>
+              </select>
+            </div>
+            <div class="fg full">
+              <label>Ihr Projekt</label>
+              <textarea name="nachricht" placeholder="Beschreiben Sie kurz was Sie sich vorstellen..."></textarea>
+            </div>
+          </div>
+          <button type="submit" class="form-submit">✉ Anfrage absenden</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>© 2026 <strong>Bader Pflasterbau</strong> · Forstweg 20 · 91154 Roth · 09171 70339</p>
+  <div class="footer-links">
+    <a href="#" onclick="document.getElementById('impressum-popup').style.display='block';return false;">Impressum</a>
+    <a href="#" onclick="document.getElementById('datenschutz-popup').style.display='block';return false;">Datenschutz</a>
+  </div>
+</footer>
+
+<script>
+const obs = new IntersectionObserver((entries) => {
+  entries.forEach((e, i) => {
+    if (e.isIntersecting) {
+      setTimeout(() => e.target.classList.add('visible'), i * 80);
+    }
+  });
+}, { threshold: 0.08 });
+document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+</script>
+</body>
+</html>
